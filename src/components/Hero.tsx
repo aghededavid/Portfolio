@@ -20,8 +20,8 @@ export function Hero({ onOpenCv }: { onOpenCv: () => void }) {
       </div>
       <div className="grain-dark pointer-events-none absolute inset-0 opacity-70" aria-hidden="true" />
 
-      <div className="relative mx-auto flex min-h-svh max-w-6xl flex-col px-5 sm:px-8 lg:px-12">
-        {/* masthead rule */}
+      <div className="relative mx-auto flex min-h-svh max-w-6xl flex-col px-5 pt-[72px] sm:px-8 lg:px-12">
+        {/* masthead rule — sits below the fixed header band so they never collide */}
         <div className="flex h-[72px] items-center justify-between border-b border-ivory-600/10" data-reveal>
           <span className="label">Portfolio — Vol. I</span>
           <span className="mono-note hidden sm:block">Est. practice · cybersecurity</span>
