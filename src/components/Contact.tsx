@@ -1,9 +1,51 @@
-import { Mail, Github, Linkedin, FileText, ArrowUp } from 'lucide-react'
+import { Fragment } from 'react'
+import { Mail, Github, Linkedin, Phone, FileText, ArrowUp } from 'lucide-react'
 import { profile } from '../content'
-import { PrimaryButton } from './Primitives'
+import { PrimaryButton, XIcon, MediumIcon } from './Primitives'
 
 export function Contact({ onOpenCv }: { onOpenCv: () => void }) {
   const linkedinHref = profile.linkedin || undefined
+  const phoneHref = `tel:${profile.phoneHref}`
+
+  const socialRows = [
+    {
+      key: 'github',
+      href: profile.github,
+      icon: (
+        <Github size={14} strokeWidth={1.5} aria-hidden="true" className="text-brass-600" />
+      ),
+      label: profile.githubHandle,
+      action: 'Code',
+    },
+    {
+      key: 'linkedin',
+      href: linkedinHref as string,
+      icon: <Linkedin size={14} strokeWidth={1.5} aria-hidden="true" className="text-brass-600" />,
+      label: 'LinkedIn',
+      action: 'Profile',
+    },
+    {
+      key: 'x',
+      href: profile.x,
+      icon: <XIcon size={13} />,
+      label: profile.xHandle,
+      action: 'Follow',
+    },
+    {
+      key: 'medium',
+      href: profile.medium,
+      icon: <MediumIcon size={13} />,
+      label: profile.mediumHandle,
+      action: 'Read',
+    },
+    {
+      key: 'phone',
+      href: phoneHref,
+      icon: <Phone size={14} strokeWidth={1.5} aria-hidden="true" className="text-brass-600" />,
+      label: profile.phone,
+      action: 'Call',
+    },
+  ]
 
   return (
     <section id="contact" className="relative overflow-hidden border-t border-ivory-600/12">
@@ -43,30 +85,25 @@ export function Contact({ onOpenCv }: { onOpenCv: () => void }) {
                   <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory-600">Write</span>
                 </a>
               </li>
-              <li className="h-px bg-ivory-600/10" aria-hidden="true" />
-              <li>
-                <a href={profile.github} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4">
-                  <span className="flex items-center gap-3 text-[13.5px] text-ivory-400 transition-colors group-hover:text-brass-300">
-                    <Github size={14} strokeWidth={1.5} aria-hidden="true" className="text-brass-600" />
-                    {profile.githubHandle}
-                  </span>
-                  <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory-600">Code</span>
-                </a>
-              </li>
-              {linkedinHref && (
-                <>
+              {socialRows.map((row) => (
+                <Fragment key={row.key}>
                   <li className="h-px bg-ivory-600/10" aria-hidden="true" />
                   <li>
-                    <a href={linkedinHref} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4">
+                    <a
+                      href={row.href}
+                      target={row.href.startsWith('http') ? '_blank' : undefined}
+                      rel={row.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="group flex items-center justify-between gap-4"
+                    >
                       <span className="flex items-center gap-3 text-[13.5px] text-ivory-400 transition-colors group-hover:text-brass-300">
-                        <Linkedin size={14} strokeWidth={1.5} aria-hidden="true" className="text-brass-600" />
-                        LinkedIn
+                        {row.icon}
+                        {row.label}
                       </span>
-                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory-600">Profile</span>
+                      <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ivory-600">{row.action}</span>
                     </a>
                   </li>
-                </>
-              )}
+                </Fragment>
+              ))}
               <li className="h-px bg-ivory-600/10" aria-hidden="true" />
               <li>
                 <button

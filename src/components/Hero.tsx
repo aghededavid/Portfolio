@@ -1,7 +1,7 @@
-import { FileDown, ArrowDown, Github, Linkedin, ArrowUpRight } from 'lucide-react'
+import { FileDown, ArrowDown, Github, Linkedin, Phone, ArrowUpRight } from 'lucide-react'
 import { profile } from '../content'
 import { ArchitecturePlate } from './ArchitecturePlate'
-import { PrimaryButton, GhostButton, IconLink } from './Primitives'
+import { PrimaryButton, GhostButton, IconLink, XIcon, MediumIcon } from './Primitives'
 
 export function Hero({ onOpenCv }: { onOpenCv: () => void }) {
   return (
@@ -63,11 +63,18 @@ export function Hero({ onOpenCv }: { onOpenCv: () => void }) {
               <IconLink href={profile.github} label="GitHub — aghededavid">
                 <Github size={16} strokeWidth={1.5} aria-hidden="true" />
               </IconLink>
-              {profile.linkedin && (
-                <IconLink href={profile.linkedin} label="LinkedIn">
-                  <Linkedin size={16} strokeWidth={1.5} aria-hidden="true" />
-                </IconLink>
-              )}
+              <IconLink href={profile.linkedin} label="LinkedIn — aghede-david">
+                <Linkedin size={16} strokeWidth={1.5} aria-hidden="true" />
+              </IconLink>
+              <IconLink href={profile.x} label={`X (Twitter) — ${profile.xHandle}`}>
+                <XIcon size={15} />
+              </IconLink>
+              <IconLink href={profile.medium} label={`Medium — ${profile.mediumHandle}`}>
+                <MediumIcon size={15} />
+              </IconLink>
+              <IconLink href={`tel:${profile.phoneHref}`} label={`Call ${profile.phone}`}>
+                <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
+              </IconLink>
               <span className="ml-1 font-mono text-[10.5px] tracking-[0.08em] text-ivory-600">{profile.githubHandle}</span>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { profile, about, experience, arsenal, projects } from '../content'
 import { useLockBody } from '../lib/useLockBody'
@@ -16,6 +16,14 @@ export function CurriculumVitae({ open, onClose }: { open: boolean; onClose: () 
   }, [open, onClose])
 
   if (!open) return null
+
+  const cvContactItems = [
+    { label: 'github.com/aghededavid', href: profile.github },
+    { label: 'linkedin.com/in/aghede-david-58a626273', href: profile.linkedin },
+    { label: profile.xHandle, href: profile.x },
+    { label: `medium ${profile.mediumHandle}`, href: profile.medium },
+    { label: profile.phone, href: `tel:${profile.phoneHref}` },
+  ]
 
   return (
     <div
@@ -61,14 +69,23 @@ export function CurriculumVitae({ open, onClose }: { open: boolean; onClose: () 
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10.5px] text-espresso-600">
               <span>{profile.email}</span>
-              <span aria-hidden="true">·</span>
-              <span>github.com/aghededavid</span>
-              {profile.linkedin && (
-                <>
+              {cvContactItems.map((item, i) => (
+                <Fragment key={item.label}>
                   <span aria-hidden="true">·</span>
-                  <span>LinkedIn</span>
-                </>
-              )}
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                      className="transition-colors hover:text-brass-700"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </Fragment>
+              ))}
               <span aria-hidden="true">·</span>
               <span>{profile.location}</span>
             </div>

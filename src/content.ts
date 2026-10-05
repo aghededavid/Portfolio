@@ -15,12 +15,17 @@ export const profile = {
   wordmark: 'AGHEDE',
   wordmarkSub: 'SECURITY / ENGINEERING',
   role: 'Cybersecurity Engineer / Security Researcher',
-  // TODO: replace with the real email address.
-  email: 'david@aghede.example',
-  // TODO: replace with the real LinkedIn profile URL.
-  linkedin: '',
+  // TODO: replace with a real professional headshot in /public and update the path below.
+  email: 'davidaghede598@gmail.com',
+  linkedin: 'https://linkedin.com/in/aghede-david-58a626273',
   github: 'https://github.com/aghededavid',
   githubHandle: '@aghededavid',
+  medium: 'https://medium.com/@davidaghede598',
+  mediumHandle: '@davidaghede598',
+  x: 'https://x.com/SecOpsSignal',
+  xHandle: '@SecOpsSignal',
+  phone: '+2349075535567',
+  phoneHref: '+2349075535567',
   location: 'Nigeria · Remote-friendly',
   headline: ['Building systems', 'that make trust', 'measurable.'],
   heroCopy:

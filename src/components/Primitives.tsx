@@ -128,6 +128,38 @@ export function IconLink({ href, label, children }: { href: string; label: strin
   )
 }
 
+/* ── Brand icons for platforms lucide doesn't cover (X, Medium) ──────────── */
+
+export function XIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
+export function MediumIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M13.54 12A6.8 6.8 0 1 1 6.75 5.2 6.77 6.77 0 0 1 13.54 12m7.42 0c0 3.54-1.51 6.42-3.38 6.42s-3.39-2.88-3.39-6.42 1.52-6.42 3.39-6.42S20.96 8.46 20.96 12M24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12" />
+    </svg>
+  )
+}
+
 /* ── Tag row ──────────────────────────────────────────────────────────────── */
 
 export function TagRow({ items, paper = false }: { items: string[]; paper?: boolean }) {
